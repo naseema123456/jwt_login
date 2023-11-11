@@ -59,11 +59,11 @@ export class EditUserComponent implements OnInit {
     }
   }
 
-  getUser(user_id: any) {
+  getUser(user_id: string) {  
     this.http
-      .post(
+      .get(
         `http://localhost:3000/api/admin/getUser/${user_id}`,
-        {},
+        
         {
           withCredentials: true,
         }

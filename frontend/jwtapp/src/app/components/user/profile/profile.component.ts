@@ -31,14 +31,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     private store: Store<{userdetails:User}>
   ){}
 
-  // userData$ = this.store.pipe(select(userProfileSelector)).subscribe( profileData => {
-
-  //   console.log(profileData,'profileData');
-  //   this.name = profileData.name;
-  //   this.email = profileData.email;
-  //   this.img = profileData?.image;
-    
-  // })
+ 
 
   userData$ = this.store.pipe(select(userProfileSelector)).subscribe( profileData => {
     console.log('hello');
@@ -49,9 +42,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     console.log(profileData,'profileData');
     
   })
-  // userData$ :Observable<User>= this.store.pipe(select(userProfileSelector));
 
-  // userData$=this.store.select(userProfileSelector)
 
   ngAfterViewInit(): void {
     Emitters.authEmitter.emit(true)
@@ -81,10 +72,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     )
   }
 
-  // onFileSelected(event:Event){
-  //   this.selectedFile = <File>event.target.files[0];
-  //   console.log(event);
-  // }
+  
   onFileSelected(event: Event): void {
     const inputElement = (event.target as HTMLInputElement)?.files;
     

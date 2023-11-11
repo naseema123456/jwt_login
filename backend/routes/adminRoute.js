@@ -69,7 +69,7 @@ adminRouter.get('/usersList', async (req, res) => {
     try {
         console.log('in Users list controller');
         const users = await User.find()
-        console.log(users);
+        // console.log(users);
         res.send(users)
     } catch (error) {
         console.log(error)
@@ -87,9 +87,9 @@ adminRouter.post('/deleteUser/:id', async (req, res) => {
     }
 })
 
-adminRouter.post('/getUser/:id', async (req, res) => {
-    try {
-        const userData = await User.findById({ _id: req.params.id }); console.log(_id);
+adminRouter.get('/getUser/:user_id', async (req, res) => {
+    try {console.log(req.params.user_id);
+        const userData = await User.findById({ _id:req.params.user_id});
         if (!userData) return res.send({ message: 'Something went wrong' })
         const { password, ...data } = userData.toJSON();
         res.send(data);
@@ -100,7 +100,7 @@ adminRouter.post('/getUser/:id', async (req, res) => {
 
 adminRouter.post('/editUser', async (req, res) => {
     try {
-        console.log(req.body, 'hiii........................');
+        console.log(req.body,);
         const { name, userId } = req.body;
         const _id = req.body.userId
         const userData = await User.updateOne({ _id }, { $set: { name } });
